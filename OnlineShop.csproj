@@ -18,6 +18,15 @@
     <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
     <None Remove="Views\Order\" />
     <None Remove="Models\Base\" />
+    <None Remove="Areas\" />
+    <None Remove="Areas\Admin\" />
+    <None Remove="Areas\Admin\Controllers\" />
+    <None Remove="Areas\Admin\Views\" />
+    <None Remove="Areas\Admin\Views\Dashboard\" />
+    <None Remove="Views\LoginRegister\" />
+    <None Remove="ViewModels\" />
+    <None Remove="Services\" />
+    <None Remove="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -36,6 +45,18 @@
     <Folder Include="Views\Product\" />
     <Folder Include="Views\Order\" />
     <Folder Include="Models\Base\" />
+    <Folder Include="wwwroot\assets\img\products\" />
+    <Folder Include="Areas\" />
+    <Folder Include="Areas\Admin\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Views\" />
+    <Folder Include="Areas\Admin\Views\Dashboard\" />
+    <Folder Include="Views\LoginRegister\" />
+    <Folder Include="wwwroot\admin\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Services\" />
+    <Folder Include="Views\Error\" />
+    <Folder Include="wwwroot\error\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
@@ -45,6 +66,9 @@
     <Content Remove="wwwroot\assets\js\" />
     <Content Remove="wwwroot\assets\lib\" />
     <Content Remove="wwwroot\assets\mail\" />
+    <Content Remove="wwwroot\assets\img\products\" />
+    <Content Remove="wwwroot\admin\" />
+    <Content Remove="wwwroot\error\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.27" />

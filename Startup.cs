@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OnlineShop.DAL;
+using OnlineShop.Services;
 
 namespace OnlineShop
 {
@@ -31,6 +32,7 @@ namespace OnlineShop
             {
                 opt.UseSqlServer(configuration.GetConnectionString("Default"));
             });
+            services.AddScoped<LayoutService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -5,12 +5,9 @@ namespace OnlineShop.Controllers
 {
     public class ProductController:Controller
     {
-       public IActionResult Index()
+        public IActionResult Detail(int? id)
         {
-            return View();
-        }
-        public IActionResult Defaut()
-        {
+            if (id is null || id == 0) return RedirectToAction("notfound", "error");
             return View();
         }
     }
