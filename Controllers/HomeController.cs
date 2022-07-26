@@ -18,6 +18,9 @@ namespace OnlineShop.Controllers
         {
             this._context = context;
         }
+
+
+
        public async Task<IActionResult> Index()
         {
             HomeVM homeVM = new HomeVM
@@ -30,6 +33,8 @@ namespace OnlineShop.Controllers
             };       
             return View(homeVM);
         }
+
+
 
         public async Task<IActionResult> Shop()
         {
