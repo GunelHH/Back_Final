@@ -34,11 +34,11 @@ namespace OnlineShop.Areas.Admin.Controllers
 
         public async Task<IActionResult> Details(int? id)
         {
-            if (id is null || id == 0)return RedirectToAction("notfound", "error");
+            if (id is null || id == 0) return RedirectToAction("notfound", "error", new { area = string.Empty });
             Clothe clothes = await _context.Clothes.Include(i => i.Category)
                 .Include(i => i.ClotheInformation).ThenInclude(i=>i.Clothe)
                 .Include(i => i.ImageClothes).Include(i => i.Tag).FirstOrDefaultAsync(i => i.Id == id);
-            if(clothes is null) return RedirectToAction("notfound", "error");
+            if(clothes is null) return RedirectToAction("notfound", "error", new { area = string.Empty });
             return View(clothes);
         }
 
@@ -130,7 +130,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         {
             if (id is null || id == 0) return RedirectToAction("notfound", "error");
             Clothe clothes = _context.Clothes.FirstOrDefault(i=>i.Id==id);
-            if (clothes is null) return RedirectToAction("notfound", "error");
+            if (clothes is null) return RedirectToAction("notfound", "error", new { area = string.Empty });
 
             ViewBag.Categories = _context.Categories.ToList();
             ViewBag.Tags = _context.Tags.ToList();

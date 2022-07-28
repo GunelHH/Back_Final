@@ -280,25 +280,53 @@
     <script src="~/admin/panel/js/dataTables.bootstrap4.js"></script>
     <!-- End custom js for this page-->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    @RenderSection("Scripts", false)
     <script src="~/admin/panel/js/jquery.cookie.js" type="text/javascript"></script>
-    <script>
-        Swal.fire({
-            title: 'Custom width, padding, color, background.',
-            width: 600,
-            padding: '3em',
-            color: '#716add',
-            background: '#fff url(/images/trees.png)',
-            backdrop: `
-    rgba(0,0,123,0.4)
-    url("/images/nyan-cat.gif")
-    left top
-    no-repeat
-  `
-        })
-    </script>
 </body>
 
+
+@*<script>
+    const removeBtns = document.querySelectorAll("#remove-btn");
+
+    removeBtns.forEach(btn => btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your imaginary file is safe :)',
+                    'error'
+                )
+            }
+        })
+
+
+    }));</script>*@
 </html>
 
 

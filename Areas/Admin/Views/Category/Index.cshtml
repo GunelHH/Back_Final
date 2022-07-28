@@ -51,7 +51,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a asp-area="admin" asp-controller="category" asp-action="delete" asp-route-id="@category.Id" class="btn btn-danger">
+                                    <a id="remove-btn" asp-area="admin" asp-controller="category" asp-action="delete" asp-route-id="@category.Id" class="btn btn-danger">
                                         <i class="mdi mdi-delete text-white "></i>
                                     </a>
                                 </td>
@@ -69,4 +69,71 @@
         </div>
     </div>
 </div>
+@section Scripts{
 
+
+
+    <script>
+        const removeBtns = document.querySelectorAll("#remove-btn");
+
+        removeBtns.forEach(btn => btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            console.log("sakam");
+            const hrefAttribute = btn.getAttribute("href");
+            console.log(hrefAttribute)
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    swalWithBootstrapButtons.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                
+                    const myHeaders = new Headers();
+
+                    const myRequest = new Request(hrefAttribute, {
+                        method: 'GET',
+                        headers: myHeaders,
+                        mode: 'cors',
+                        cache: 'default',
+                    });
+
+                    fetch(myRequest)
+                        .then((response) => response.blob())
+                        .then((myBlob) => {
+                            myImage.src = URL.createObjectURL(myBlob);
+                        });
+                   
+
+                } else if (
+                   
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Cancelled',
+                        'Your imaginary file is safe :)',
+                        'error'
+                    )
+                }
+            })
+
+
+        }));</script>
+
+}

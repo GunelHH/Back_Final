@@ -350,3 +350,11 @@
 /Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Category/Details.cshtml.g.cs
 /Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Category/Index.cshtml.g.cs
 /Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Category/Update.cshtml.g.cs
+/Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/ClotheInformation/Create.cshtml.g.cs
+/Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/ClotheInformation/Details.cshtml.g.cs
+/Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/ClotheInformation/Index.cshtml.g.cs
+/Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/ClotheInformation/Update.cshtml.g.cs
+/Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Color/Create.cshtml.g.cs
+/Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Color/Detail.cshtml.g.cs
+/Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Color/Index.cshtml.g.cs
+/Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Color/Update.cshtml.g.cs

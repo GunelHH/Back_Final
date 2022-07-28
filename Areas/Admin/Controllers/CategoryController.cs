@@ -93,7 +93,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                 if (Methods.CheckCategory(id, ExistName))
                 {
                     ModelState.AddModelError("Name", "The category is already exist!");
-                    return View();
+                    return View(category);
                 }
 
                 string ImageFile = category.Image;
