@@ -1,12 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Http;
 using OnlineShop.Models.Base;
 
 namespace OnlineShop.Models
 {
     public class Slider:BaseEntity
     {
-        [Required]
         public string Image { get; set; }
 
         [Required]
@@ -20,6 +21,9 @@ namespace OnlineShop.Models
 
         [Required]
         public byte Order { get; set; }
+
+        [NotMapped]
+        public IFormFile Photo { get; set; }
 
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Http;
 using OnlineShop.Models.Base;
 
 namespace OnlineShop.Models
@@ -29,6 +31,18 @@ namespace OnlineShop.Models
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }
+
+
+        [NotMapped]
+        public int ClotheImageIds { get; set; }
+
+        [NotMapped]
+        public IFormFile MainImage { get; set; }
+
+        [NotMapped]
+        public List<IFormFile> SecondaryImages { get; set; }
+
+
     }
 }
 

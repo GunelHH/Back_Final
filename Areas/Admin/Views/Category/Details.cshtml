@@ -1,0 +1,32 @@
+﻿@model Category
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Slider</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => Model.Image)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/assets/img/@Model.Image" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => Model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => Model.Name)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="update" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="index">Back to List</a>
+</div>
+

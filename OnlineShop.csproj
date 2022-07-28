@@ -23,10 +23,17 @@
     <None Remove="Areas\Admin\Controllers\" />
     <None Remove="Areas\Admin\Views\" />
     <None Remove="Areas\Admin\Views\Dashboard\" />
-    <None Remove="Views\LoginRegister\" />
     <None Remove="ViewModels\" />
     <None Remove="Services\" />
     <None Remove="Views\Error\" />
+    <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+    <None Remove="Areas\Admin\Views\Shared\" />
+    <None Remove="Areas\Admin\Views\Slider\" />
+    <None Remove="Utilities\" />
+    <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
+    <None Remove="Areas\Admin\Views\Clothes\" />
+    <None Remove="Areas\Admin\Views\Advertisement\" />
+    <None Remove="Areas\Admin\Views\Category\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -51,12 +58,18 @@
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Views\" />
     <Folder Include="Areas\Admin\Views\Dashboard\" />
-    <Folder Include="Views\LoginRegister\" />
     <Folder Include="wwwroot\admin\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Services\" />
     <Folder Include="Views\Error\" />
     <Folder Include="wwwroot\error\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="wwwroot\admin\panel\" />
+    <Folder Include="Areas\Admin\Views\Slider\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="Areas\Admin\Views\Clothes\" />
+    <Folder Include="Areas\Admin\Views\Advertisement\" />
+    <Folder Include="Areas\Admin\Views\Category\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
@@ -69,6 +82,7 @@
     <Content Remove="wwwroot\assets\img\products\" />
     <Content Remove="wwwroot\admin\" />
     <Content Remove="wwwroot\error\" />
+    <Content Remove="wwwroot\admin\panel\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.27" />
@@ -78,5 +92,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.27" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.25" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Http;
 using OnlineShop.Models.Base;
 
 namespace OnlineShop.Models
@@ -13,6 +15,9 @@ namespace OnlineShop.Models
         public string Image { get; set; }
 
         public List<Clothe> Clothe { get; set; }
+
+        [NotMapped]
+        public IFormFile Photo { get; set; }
     }
 }
 

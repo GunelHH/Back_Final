@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Linq;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using OnlineShop.Models;
 
 namespace OnlineShop.DAL
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext:IdentityDbContext<AppUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext>options):base(options)
         {
@@ -44,9 +46,9 @@ namespace OnlineShop.DAL
                .HasIndex(p => p.Key)
                .IsUnique();
 
-            //modelBuilder.Entity<Category>()
-            //   .HasIndex(c => c.Name)
-            //   .IsUnique();
+            modelBuilder.Entity<Category>()
+               .HasIndex(c => c.Name)
+               .IsUnique();
 
             base.OnModelCreating(modelBuilder);
         }

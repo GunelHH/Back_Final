@@ -1,0 +1,52 @@
+﻿@model Clothe
+
+
+<div class="main-panel">
+    <h1>Create Clothes</h1>
+
+    <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+    <form class="mt-3" method="post" enctype="multipart/form-data">
+        <div>
+            <label>Main Image:</label><br />
+            <input asp-for="MainImage" class="form-control" /><br />
+            <span class="text-danger" asp-validation-for="MainImage"></span>
+        </div>
+        <div>
+            <label>Another Images:</label><br />
+            <input asp-for="SecondaryImages" class="form-control" /><br />
+            <span class="text-danger" asp-validation-for="SecondaryImages"></span>
+        </div>
+        <div>
+            <label>Name:</label><br />
+            <input asp-for="Name" class="form-control" /><br />
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div>
+            <label>Price:</label><br />
+            <input asp-for="Price" class="form-control" /><br />
+            <span class="text-danger" asp-validation-for="Price"></span>
+        </div>
+        <div>
+            <label>Description:</label><br />
+            <input asp-for="Desc" class="form-control" /><br />
+            <span class="text-danger" asp-validation-for="Desc"></span>
+        </div>
+        <div>
+            <label>Clothes Information Id:</label><br />
+            <select asp-for="ClotheInformationId" class="form-control" asp-items="@(new SelectList( ViewBag.Informations,"Id","Title"))"></select>
+        </div>
+        <div>
+            <label>Tag Id:</label><br />
+           <select asp-for="TagId" class="form-control" asp-items="@(new SelectList(ViewBag.Tags,"Id","Name"))"></select>
+        </div>
+        <div>
+            <label>Category Id:</label><br />
+            <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.Categories,"Id","Name"))"></select>
+        </div>
+        <div class="mt-2">
+            <button class="btn btn-success" type="submit">Create</button>
+        </div>
+    </form>
+</div>
+
+

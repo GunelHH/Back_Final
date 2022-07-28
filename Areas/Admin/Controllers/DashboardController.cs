@@ -6,11 +6,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace OnlineShop.Areas.Admin
 {
+    [Area("Admin")]
     public class DashboardController : Controller
     {
         public IActionResult Index()
-        {
+        {  
             return View();
         }
+
+
+       
+      
     }
+
+   
 }

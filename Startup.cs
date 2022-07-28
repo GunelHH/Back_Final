@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OnlineShop.DAL;
+using OnlineShop.Models;
 using OnlineShop.Services;
 
 namespace OnlineShop
@@ -32,6 +35,24 @@ namespace OnlineShop
             {
                 opt.UseSqlServer(configuration.GetConnectionString("Default"));
             });
+
+            services.AddIdentity<AppUser, IdentityRole>(opt =>
+            {
+                opt.User.RequireUniqueEmail = false;
+                opt.User.AllowedUserNameCharacters = "qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM@_-.~";
+
+
+                opt.Password.RequiredUniqueChars = 3;
+                opt.Password.RequiredLength = 8;
+                opt.Password.RequireDigit = true;
+
+
+                opt.Lockout.MaxFailedAccessAttempts = 6;
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                opt.Lockout.AllowedForNewUsers = true;
+
+            }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
+
             services.AddScoped<LayoutService>();
         }
 
@@ -46,11 +67,18 @@ namespace OnlineShop
             app.UseRouting();
             app.UseStaticFiles();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute("areas", "{area:exists}/{controller=dashboard}/{action=index}/{id?}");
                 endpoints.MapControllerRoute("default","{controller=home}/{action=index}/{id?}");
             });
+
+        
         }
     }
 }
