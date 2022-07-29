@@ -14,7 +14,7 @@
             @Html.DisplayNameFor(model => Model.ImageClothes.FirstOrDefault(i=>i.IsMain==true).Name)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => Model.ImageClothes.FirstOrDefault(i => i.IsMain == true).Name)
+           <img src="~/assets/img/products/@Model.ImageClothes.FirstOrDefault(i=>i.IsMain==true).Name" />
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => Model.Name)

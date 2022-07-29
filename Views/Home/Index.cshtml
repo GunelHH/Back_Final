@@ -80,19 +80,38 @@
     <div class="row px-xl-5 pb-3">
         @foreach (Category category in Model.Categories)
         {
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="~/assets/img/products/@category.Image" alt="@category.Name">
+            if (category.Id == 0)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                    <a class="text-decoration-none" asp-controller="product" asp-action="index">
+                        <div class="cat-item d-flex align-items-center mb-4">
+                            <div class="overflow-hidden" style="width: 100px; height: 100px;">
+                                <img class="img-fluid" src="~/assets/img/products/@category.Image" alt="@category.Name">
+                            </div>
+                            <div class="flex-fill pl-3">
+                                <h6>@category.Name</h6>
+                                <small class="text-body">@(category.Clothe.Count()==0 ? "No Product" : category.Clothe.Count()==1 ? $"{category.Clothe.Count()} Product" : $"{category.Clothe.Count() } Products")</small>
+                            </div>
                         </div>
-                        <div class="flex-fill pl-3">
-                            <h6>@category.Name</h6>
-                            <small class="text-body">@(category.Clothe.Count()==0 ? "No Product" : category.Clothe.Count()==1 ? $"{category.Clothe.Count()} Product" : $"{category.Clothe.Count() } Products")</small>
+                    </a>
+                </div>
+            }
+            else
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                    <a class="text-decoration-none" asp-controller="product" asp-action="shop">
+                        <div class="cat-item d-flex align-items-center mb-4">
+                            <div class="overflow-hidden" style="width: 100px; height: 100px;">
+                                <img class="img-fluid" src="~/assets/img/products/@category.Image" alt="@category.Name">
+                            </div>
+                            <div class="flex-fill pl-3">
+                                <h6>@category.Name</h6>
+                                <small class="text-body">@(category.Clothe.Count()==0 ? "No Product" : category.Clothe.Count()==1 ? $"{category.Clothe.Count()} Product" : $"{category.Clothe.Count() } Products")</small>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            }
         }
 
     </div>

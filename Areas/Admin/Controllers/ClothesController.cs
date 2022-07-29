@@ -145,5 +145,23 @@ namespace OnlineShop.Areas.Admin.Controllers
         //{
 
         //}
+
+
+        public IActionResult Delete(int? id)
+        {
+            if(id is null || id==0)return RedirectToAction("notfound", "error");
+            Clothe clothe = _context.Clothes.Include(i=>i.ImageClothes).FirstOrDefault(i=>i.Id==id);
+            if (clothe is null)return RedirectToAction("notfound", "error");
+
+            _context.Clothes.Remove(clothe);
+            foreach (ImageClothe img in clothe.ImageClothes)
+            {
+                Methods.FileDelete(env.WebRootPath, "assets/img/products", img.Name);
+                _context.ImageClothes.Remove(img);
+            }
+            _context.Clothes.Remove(clothe);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

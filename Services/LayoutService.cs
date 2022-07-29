@@ -25,6 +25,7 @@ namespace OnlineShop.Services
             List<Category> categories = _context.Categories.ToList();
             return categories;
         }
+
     }
 }
 

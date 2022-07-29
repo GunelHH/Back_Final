@@ -36,6 +36,9 @@
     <None Remove="Areas\Admin\Views\Category\" />
     <None Remove="Areas\Admin\Views\ClotheInformation\" />
     <None Remove="Areas\Admin\Views\Color\" />
+    <None Remove="Areas\Admin\Views\Size\" />
+    <None Remove="Areas\Admin\Views\Tag\" />
+    <None Remove="Areas\Admin\Views\Setting\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -74,6 +77,9 @@
     <Folder Include="Areas\Admin\Views\Category\" />
     <Folder Include="Areas\Admin\Views\ClotheInformation\" />
     <Folder Include="Areas\Admin\Views\Color\" />
+    <Folder Include="Areas\Admin\Views\Size\" />
+    <Folder Include="Areas\Admin\Views\Tag\" />
+    <Folder Include="Areas\Admin\Views\Setting\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />

@@ -58,10 +58,10 @@ namespace OnlineShop.Areas.Admin.Controllers
                 {
                     if (color.Name.ToLower().Trim() == c.Name.Trim().ToLower())
                     {
-                    context.Colors.Add(color);
-                    context.SaveChanges();
-                    return RedirectToAction(nameof(Index));
-                }
+                      context.Colors.Add(color);
+                      context.SaveChanges();
+                      return RedirectToAction(nameof(Index));
+                    }
 
                 }
             ModelState.AddModelError("Name", "No Such Color ");
@@ -77,19 +77,55 @@ namespace OnlineShop.Areas.Admin.Controllers
             return View(color);
         }
 
-        //public IActionResult Update(int? id,Color color)
-        //{
-        //    Color exist = context.Colors.FirstOrDefault(i => i.Id == id);
-        //    if(exist is null) return RedirectToAction("notfound", "error", new { area = string.Empty });
-        //    if (!ModelState.IsValid) return View(exist);
 
-        //    Color colorName = context.Colors.FirstOrDefault(i => i.Name == color.Name);
-        //    if (colorName!=null && colorName.Id!=id)
-        //    {
-        //        ModelState.AddModelError("Name", "Already exist");
-        //        return View(exist);
-        //    }
-        //}
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Update(int? id, Color color)
+        {
+            Color exist = context.Colors.FirstOrDefault(i => i.Id == id);
+            if (exist is null) return RedirectToAction("notfound", "error", new { area = string.Empty });
+            if (!ModelState.IsValid) return View(exist);
+
+            Color colorName = context.Colors.FirstOrDefault(i => i.Name == color.Name);
+            if (colorName != null && colorName.Id != id)
+            {
+                ModelState.AddModelError("Name", "Already exist");
+                return View(exist);
+            }
+
+            Type colorType = typeof(System.Drawing.Color);
+
+            PropertyInfo[] propInfoList = colorType.GetProperties(BindingFlags.Static | BindingFlags.DeclaredOnly | BindingFlags.Public);
+
+            foreach (var c in propInfoList)
+            {
+                if (color.Name.ToLower().Trim() == c.Name.Trim().ToLower())
+
+                {
+                    exist.Name = color.Name;
+
+                    //context.Colors.Add(exist);
+                    context.SaveChanges();
+                    return RedirectToAction(nameof(Index));
+                }
+
+            }
+
+            ModelState.AddModelError("Name", "No Such Color ");
+            return View();
+
+        }
+
+        public IActionResult Delete(int? id)
+        {
+            if(id is null || id==0)  return RedirectToAction("notfound", "error", new { area = string.Empty });
+            Color color = context.Colors.FirstOrDefault(i=>i.Id==id);
+            if(color is null) return RedirectToAction("notfound", "error", new { area = string.Empty });
+
+            context.Colors.Remove(color);
+            context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
 
     }
 }

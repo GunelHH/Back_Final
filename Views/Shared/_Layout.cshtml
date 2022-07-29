@@ -45,8 +45,16 @@
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" asp-controller="LoginRegister" asp-action="login">Sign in</a>
-                            <a class="dropdown-item"asp-controller="LoginRegister" asp-action="register" >Sign up</a>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a class="dropdown-item">@User.Identity.Name</a>
+                                <a class="dropdown-item" asp-controller="account" asp-action="logout">Log out</a>
+                            }
+                            else
+                            {
+                                <a class="dropdown-item" asp-controller="account" asp-action="login">Sign in</a>
+                                <a class="dropdown-item" asp-controller="account" asp-action="register">Sign up</a>
+                            }
                         </div>
                     </div>
                     <div class="btn-group mx-2">

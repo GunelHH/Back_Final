@@ -25,6 +25,15 @@ namespace OnlineShop.Controllers
             ViewBag.Clothes = _context.Clothes.Include(i=>i.ImageClothes).ToList();
             return View(clothes);
         }
+
+        public  async Task<IActionResult> Shop(int? id)
+        {
+            if (id is null || id == 0) return RedirectToAction("notfound", "error");
+            Category category =await _context.Categories.Include(i=>i.Clothe).FirstOrDefaultAsync(i => i.Id == id);
+            if(category is null) return RedirectToAction("notfound", "error");
+
+            return View(category.Clothe);
+        }
     }
 }
 
