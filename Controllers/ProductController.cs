@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +9,7 @@ using OnlineShop.Models;
 
 namespace OnlineShop.Controllers
 {
-    public class ProductController:Controller
+    public class ProductController : Controller
     {
         private readonly AppDbContext _context;
 
@@ -19,20 +20,68 @@ namespace OnlineShop.Controllers
         public IActionResult Detail(int? id)
         {
             if (id is null || id == 0) return RedirectToAction("notfound", "error");
-           Clothe    clothes=_context.Clothes.Include(i=>i.ImageClothes).Include(i=>i.ClotheInformation).FirstOrDefault(i=>i.Id==id);
+            Clothe clothes = _context.Clothes.Include(i => i.ImageClothes).Include(i => i.ClotheInformation).FirstOrDefault(i => i.Id == id);
             if (id is null) return RedirectToAction("notfound", "error");
 
-            ViewBag.Clothes = _context.Clothes.Include(i=>i.ImageClothes).ToList();
+
+            List<Clothe> relatedClothes = _context.Clothes.Include(c=>c.ImageClothes).Include(c => c.Category).Where(c => c.CategoryId == clothes.CategoryId && c.Id!=id).ToList();
+
+            ViewBag.Related = relatedClothes;
             return View(clothes);
         }
 
-        public  async Task<IActionResult> Shop(int? id)
+        public async Task<IActionResult> Shop(int? id,string clicked)
         {
-            if (id is null || id == 0) return RedirectToAction("notfound", "error");
-            Category category =await _context.Categories.Include(i=>i.Clothe).FirstOrDefaultAsync(i => i.Id == id);
-            if(category is null) return RedirectToAction("notfound", "error");
+            if (id != null && id != 0)
+            {
+                Category category = await _context.Categories.Include(i => i.Clothe).ThenInclude(i =>i.ImageClothes).FirstOrDefaultAsync(c => c.Id == id);
+                if (category != null)
+                {
+                    if (category.Clothe.Count()!=0)
+                    {
+                        return View(category.Clothe);
+                    }
+                    else
+                    {
+                        ViewBag.Message = "There is no Product in this category";
+                        return View();
+                    }
+                }
+                
+                   
+            }
+            List<Clothe> clothes = await _context.Clothes.Include(c => c.ImageClothes).ToListAsync();
 
-            return View(category.Clothe);
+
+            if (!string.IsNullOrEmpty(clicked))
+            {
+                clothes = Sorting(clicked);
+            }
+            
+
+            return View(clothes);
+        }
+
+        public  List<Clothe> Sorting(string clicked)
+        {
+            List<Clothe> clothes = new List<Clothe>();
+
+            switch (clicked)
+            {
+                case "A-Z":
+                   clothes= _context.Clothes.Include(c => c.ImageClothes).OrderBy(i=>i.Name).ToList();
+                    break;
+                case "Z-A":
+                    clothes = _context.Clothes.Include(c => c.ImageClothes).OrderByDescending(i => i.Name).ToList();
+                    break;
+                case "Price":
+                    clothes = _context.Clothes.Include(c => c.ImageClothes).OrderByDescending(i => i.Price).ToList();
+                    break;
+                default:
+                    break;
+            }
+            return clothes;
+
         }
     }
 }

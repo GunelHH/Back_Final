@@ -284,7 +284,6 @@
 /Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/OnlineShop.RazorCoreGenerate.cache
 /Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Views/Home/Contact.cshtml.g.cs
 /Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Views/Home/Index.cshtml.g.cs
-/Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Views/Home/Shop.cshtml.g.cs
 /Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Views/Order/Cart.cshtml.g.cs
 /Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Views/Order/Checkout.cshtml.g.cs
 /Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Views/Product/Detail.cshtml.g.cs
@@ -370,3 +369,4 @@
 /Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Setting/Details.cshtml.g.cs
 /Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Setting/Index.cshtml.g.cs
 /Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Setting/Update.cshtml.g.cs
+/Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Views/Product/Shop.cshtml.g.cs

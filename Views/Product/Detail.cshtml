@@ -1,5 +1,7 @@
 ﻿@model Clothe
-
+@{
+    List<Clothe> related = ViewBag.Related;
+}
 <!-- Breadcrumb Start -->
 <div class="container-fluid">
     <div class="row px-xl-5">
@@ -47,7 +49,7 @@
                
                 <h3 class="font-weight-semi-bold mb-4">$@Model.Price</h3>
                 <p class="mb-4">
-                   @Model.Desc.Substring(0,250)
+                   @(Model.Desc.Count()>200 ? Model.Desc.Substring(0,200) : Model.Desc)
                 </p>
                 <div class="d-flex mb-3">
                     <strong class="text-dark mr-3">Sizes:</strong>
@@ -150,7 +152,7 @@
                     <div class="tab-pane fade show active" id="tab-pane-1">
                         <h4 class="mb-3">Product Description</h4>
                         <p>@Model.Desc</p><br />
-                        <p>@Model.Desc.Substring(0,500)</p>
+                                          <p>  @(Model.Desc.Count()>500 ? Model.Desc.Substring(0,500) : Model.Desc)</p>
                         
                     </div>
                     <div class="tab-pane fade" id="tab-pane-2">
@@ -160,32 +162,31 @@
                             <div class="col-md-6">
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item px-0">
-                                      @Model.Desc.Substring(0,64)
+                                        @(Model.Desc.Count()>64 ? Model.Desc.Substring(0,64) : Model.Desc)
                                     </li>
                                     <li class="list-group-item px-0">
-                                        @Model.Desc.Substring(0, 64)
+                                        @(Model.Desc.Count()>64 ? Model.Desc.Substring(0,64) : Model.Desc)
                                     </li>
                                     <li class="list-group-item px-0">
-                                        @Model.Desc.Substring(0, 64)
+                                        @(Model.Desc.Count()>64 ? Model.Desc.Substring(0,64) : Model.Desc)
                                     </li>
                                     <li class="list-group-item px-0">
-                                        @Model.Desc.Substring(0, 64)
-                                    </li>
+                                       @(Model.Desc.Count()>64 ? Model.Desc.Substring(0,64) : Model.Desc)
                                 </ul>
                             </div>
                             <div class="col-md-6">
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item px-0">
-                                        @Model.Desc.Substring(0, 64)
+                                        @(Model.Desc.Count()>64 ? Model.Desc.Substring(0,64) : Model.Desc)
                                     </li>
                                     <li class="list-group-item px-0">
-                                        @Model.Desc.Substring(0, 64)
+                                        @(Model.Desc.Count()>64 ? Model.Desc.Substring(0,64) : Model.Desc)
                                     </li>
                                     <li class="list-group-item px-0">
-                                        @Model.Desc.Substring(0, 64)
+                                        @(Model.Desc.Count()>64 ? Model.Desc.Substring(0,64) : Model.Desc)
                                     </li>
                                     <li class="list-group-item px-0">
-                                        @Model.Desc.Substring(0, 64)
+                                        @(Model.Desc.Count()>64 ? Model.Desc.Substring(0,64) : Model.Desc)
                                     </li>
                                 </ul>
                             </div>
@@ -254,9 +255,16 @@
     <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">You May Also Like</span></h2>
     <div class="row px-xl-5">
         <div class="col">
-            <div class="owl-carousel related-carousel">
-                @foreach (Clothe clothe in ViewBag.Clothes)
+
+
+
+            @*Burada Carouseli dagitmamaq ucun bele etmisdim sadece elaqeli mehsul sayi az olanda eynisini kopiya edir buna gore bele yazmadim*@
+
+
+
+                @*@foreach (Clothe clothe in ViewBag.Related)
                 {
+            <div class="owl-carousel related-carousel">
                     <div class="product-item bg-light">
                         <div class="product-img position-relative overflow-hidden">
                             <img class="img-fluid w-100" src="~/assets/img/products/@clothe.ImageClothes.FirstOrDefault(i=>i.IsMain==true)?.Name" alt="@clothe.ImageClothes.FirstOrDefault(i=>i.IsMain==true)?.Alternative">
@@ -282,9 +290,13 @@
                             </div>
                         </div>
                     </div>
-                }
-
             </div>
+                }*@
+
+
+           
+            @await Html.PartialAsync("_ClothesPartialView",related)
+
         </div>
     </div>
 </div>
