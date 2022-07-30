@@ -26,8 +26,15 @@ using OnlineShop.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "/Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/Views/_ViewImports.cshtml"
+using OnlineShop.ViewModels.Basket;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"de653bbf41dd5f7d8d1cd3f1b9536215bb2ca1be", @"/Views/Product/Shop.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d9b8d0201b53e5a225c6a4c6f2f70af09d676909", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"800855d3ce19ba046bada49bf4bee6bfd1b4d680", @"/Views/_ViewImports.cshtml")]
     public class Views_Product_Shop : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Clothe>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("dropdown-item"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -86,7 +93,7 @@ using OnlineShop.ViewModels;
             <h5 class=""section-title position-relative text-uppercase mb-3""><span class=""bg-secondary pr-3"">Filter by price</span></h5>
             <div class=""bg-light p-4 mb-30"">
                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "de653bbf41dd5f7d8d1cd3f1b9536215bb2ca1be5767", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "de653bbf41dd5f7d8d1cd3f1b9536215bb2ca1be5954", async() => {
                 WriteLiteral(@"
                     <div class=""custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3"">
                         <input type=""checkbox"" class=""custom-control-input"" checked id=""price-all"">
@@ -141,7 +148,7 @@ using OnlineShop.ViewModels;
             <h5 class=""section-title position-relative text-uppercase mb-3""><span class=""bg-secondary pr-3"">Filter by color</span></h5>
             <div class=""bg-light p-4 mb-30"">
                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "de653bbf41dd5f7d8d1cd3f1b9536215bb2ca1be9910", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "de653bbf41dd5f7d8d1cd3f1b9536215bb2ca1be10097", async() => {
                 WriteLiteral(@"
                     <div class=""custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3"">
                         <input type=""checkbox"" class=""custom-control-input"" checked id=""color-all"">
@@ -196,7 +203,7 @@ using OnlineShop.ViewModels;
             <h5 class=""section-title position-relative text-uppercase mb-3""><span class=""bg-secondary pr-3"">Filter by size</span></h5>
             <div class=""bg-light p-4 mb-30"">
                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "de653bbf41dd5f7d8d1cd3f1b9536215bb2ca1be14020", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "de653bbf41dd5f7d8d1cd3f1b9536215bb2ca1be14208", async() => {
                 WriteLiteral(@"
                     <div class=""custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3"">
                         <input type=""checkbox"" class=""custom-control-input"" checked id=""size-all"">
@@ -263,7 +270,7 @@ using OnlineShop.ViewModels;
                                 <button type=""button"" class=""btn btn-sm btn-light dropdown-toggle"" data-toggle=""dropdown"">Sorting</button>
                                 <div class=""dropdown-menu dropdown-menu-right"">
                                     ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "de653bbf41dd5f7d8d1cd3f1b9536215bb2ca1be18809", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "de653bbf41dd5f7d8d1cd3f1b9536215bb2ca1be18997", async() => {
                 WriteLiteral("Sort by A-Z");
             }
             );
@@ -288,7 +295,7 @@ using OnlineShop.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\n                                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "de653bbf41dd5f7d8d1cd3f1b9536215bb2ca1be20788", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "de653bbf41dd5f7d8d1cd3f1b9536215bb2ca1be20976", async() => {
                 WriteLiteral("Sort by Z-A");
             }
             );
@@ -322,7 +329,7 @@ using OnlineShop.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\n                                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "de653bbf41dd5f7d8d1cd3f1b9536215bb2ca1be23320", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "de653bbf41dd5f7d8d1cd3f1b9536215bb2ca1be23508", async() => {
                 WriteLiteral("Sort by Price");
             }
             );

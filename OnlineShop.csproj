@@ -39,6 +39,8 @@
     <None Remove="Areas\Admin\Views\Size\" />
     <None Remove="Areas\Admin\Views\Tag\" />
     <None Remove="Areas\Admin\Views\Setting\" />
+    <None Remove="ViewModels\Basket\" />
+    <None Remove="Views\Basket\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -80,6 +82,8 @@
     <Folder Include="Areas\Admin\Views\Size\" />
     <Folder Include="Areas\Admin\Views\Tag\" />
     <Folder Include="Areas\Admin\Views\Setting\" />
+    <Folder Include="ViewModels\Basket\" />
+    <Folder Include="Views\Basket\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />

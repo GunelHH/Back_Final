@@ -26,8 +26,15 @@ using OnlineShop.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "/Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/Views/_ViewImports.cshtml"
+using OnlineShop.ViewModels.Basket;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9e69db07c53f0958dceee4577df0d0a39d441cfe", @"/Views/Shared/_ClothesPartialView.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d9b8d0201b53e5a225c6a4c6f2f70af09d676909", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"800855d3ce19ba046bada49bf4bee6bfd1b4d680", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__ClothesPartialView : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Clothe>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("img-fluid w-100"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -69,7 +76,7 @@ using OnlineShop.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("    <div class=\"col-lg-3 col-md-4 col-sm-6 pb-1\">\n        <div class=\"product-item bg-light mb-4\">\n            <div class=\"product-img position-relative overflow-hidden\">\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9e69db07c53f0958dceee4577df0d0a39d441cfe5029", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9e69db07c53f0958dceee4577df0d0a39d441cfe5216", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -111,7 +118,7 @@ AddHtmlAttributeValue("", 369, clothes.Name, 369, 13, false);
             BeginWriteAttribute("href", " href=\"", 707, "\"", 714, 0);
             EndWriteAttribute();
             WriteLiteral("><i class=\"fa fa-sync-alt\"></i></a>\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9e69db07c53f0958dceee4577df0d0a39d441cfe7880", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9e69db07c53f0958dceee4577df0d0a39d441cfe8067", async() => {
                 WriteLiteral("<i class=\"fa fa-search\"></i>");
             }
             );

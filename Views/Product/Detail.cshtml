@@ -1,6 +1,7 @@
 ﻿@model Clothe
 @{
     List<Clothe> related = ViewBag.Related;
+    int count = 1;
 }
 <!-- Breadcrumb Start -->
 <div class="container-fluid">
@@ -21,18 +22,25 @@
         <div class="col-lg-5 mb-30">
             <div id="product-carousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner bg-light">
-                    <div class="carousel-item active">
-                        <img class="w-100 h-100" src="~/assets/img/products/@Model.ImageClothes.FirstOrDefault(i=>i.IsMain==true)?.Name" alt="@Model.Name">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="w-100 h-100" src="~/assets/img/products/@Model.ImageClothes.FirstOrDefault(i=>i.IsMain==false)?.Name" alt="@Model.Name">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="w-100 h-100" src="~/assets/img/products/@Model.ImageClothes.FirstOrDefault(i=>i.IsMain==false)?.Name" alt="@Model.Name">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="w-100 h-100" src="~/assets/img/products/@Model.ImageClothes.FirstOrDefault(i=>i.IsMain==false)?.Name" alt="@Model.Name">
-                    </div>
+                    @foreach (Clothe item in ViewBag.Carousel)
+                    {
+                        if (count == 1)
+                        {
+                            <div class="carousel-item active">
+                                <img class="w-100 h-100" src="~/assets/img/products/@Model.ImageClothes.FirstOrDefault(i=>i.IsMain==true)?.Name" alt="@Model.Name">
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="carousel-item ">
+                                <img class="w-100 h-100" src="~/assets/img/products/@Model.ImageClothes.FirstOrDefault(i=>i.IsMain==false)?.Name" alt="@Model.Name">
+                            </div>
+                        }
+                            count++;
+
+                    }
+
+
                 </div>
                 <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
                     <i class="fa fa-2x fa-angle-left text-dark"></i>
@@ -104,21 +112,21 @@
                 <div class="d-flex align-items-center mb-4 pt-2">
                     <div class="input-group quantity mr-3" style="width: 130px;">
                         <div class="input-group-btn">
-                            <button class="btn btn-primary btn-minus">
+                            <a asp-controller="basket" asp-action="decrease" asp-route-id="@Model.Id" class="btn btn-primary btn-minus">
                                 <i class="fa fa-minus"></i>
-                            </button>
+                            </a>
                         </div>
                         <input type="text" class="form-control bg-secondary border-0 text-center" value="1">
                         <div class="input-group-btn">
-                            <button class="btn btn-primary btn-plus">
+                            <a asp-controller="basket" asp-action="increase" asp-route-id="@Model.Id" class="btn btn-primary btn-plus">
                                 <i class="fa fa-plus"></i>
-                            </button>
+                            </a>
                         </div>
                     </div>
-                    <button class="btn btn-primary px-3">
+                    <a asp-controller="product" asp-action="addbasket" asp-route-id="@Model.Id" class="btn btn-primary px-3">
                         <i class="fa fa-shopping-cart mr-1"></i> Add To
                         Cart
-                    </button>
+                    </a>
                 </div>
                 <div class="d-flex pt-2">
                     <strong class="text-dark mr-2">Share on:</strong>
@@ -162,31 +170,31 @@
                             <div class="col-md-6">
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item px-0">
-                                        @(Model.Desc.Count()>64 ? Model.Desc.Substring(0,64) : Model.Desc)
+                                        @(Model.ClotheInformation.Desc.Count()>64 ? Model.ClotheInformation.Desc.Substring(0,64) : Model.ClotheInformation.Desc)
                                     </li>
                                     <li class="list-group-item px-0">
-                                        @(Model.Desc.Count()>64 ? Model.Desc.Substring(0,64) : Model.Desc)
+                                        @(Model.ClotheInformation.Desc.Count()>64 ? Model.ClotheInformation.Desc.Substring(0,64) : Model.ClotheInformation.Desc)
                                     </li>
                                     <li class="list-group-item px-0">
-                                        @(Model.Desc.Count()>64 ? Model.Desc.Substring(0,64) : Model.Desc)
+                                        @(Model.ClotheInformation.Desc.Count()>64 ? Model.ClotheInformation.Desc.Substring(0,64) : Model.ClotheInformation.Desc)
                                     </li>
                                     <li class="list-group-item px-0">
-                                       @(Model.Desc.Count()>64 ? Model.Desc.Substring(0,64) : Model.Desc)
-                                </ul>
+                                        @(Model.ClotheInformation.Desc.Count()>64 ? Model.ClotheInformation.Desc.Substring(0,64) : Model.ClotheInformation.Desc)
+</ul>
                             </div>
                             <div class="col-md-6">
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item px-0">
-                                        @(Model.Desc.Count()>64 ? Model.Desc.Substring(0,64) : Model.Desc)
+                                        @(Model.ClotheInformation.Desc.Count()>64 ? Model.ClotheInformation.Desc.Substring(0,64) : Model.ClotheInformation.Desc)
                                     </li>
                                     <li class="list-group-item px-0">
-                                        @(Model.Desc.Count()>64 ? Model.Desc.Substring(0,64) : Model.Desc)
+                                        @(Model.ClotheInformation.Desc.Count()>64 ? Model.ClotheInformation.Desc.Substring(0,64) : Model.ClotheInformation.Desc)
                                     </li>
                                     <li class="list-group-item px-0">
-                                        @(Model.Desc.Count()>64 ? Model.Desc.Substring(0,64) : Model.Desc)
+                                        @(Model.ClotheInformation.Desc.Count()>64 ? Model.ClotheInformation.Desc.Substring(0,64) : Model.ClotheInformation.Desc)
                                     </li>
                                     <li class="list-group-item px-0">
-                                        @(Model.Desc.Count()>64 ? Model.Desc.Substring(0,64) : Model.Desc)
+                                        @(Model.ClotheInformation.Desc.Count()>64 ? Model.ClotheInformation.Desc.Substring(0,64) : Model.ClotheInformation.Desc)
                                     </li>
                                 </ul>
                             </div>

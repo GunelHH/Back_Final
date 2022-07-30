@@ -370,3 +370,5 @@
 /Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Setting/Index.cshtml.g.cs
 /Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Setting/Update.cshtml.g.cs
 /Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Views/Product/Shop.cshtml.g.cs
+/Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_CartCheckoutPartialView.cshtml.g.cs
+/Users/gunelhesenova/Desktop/OnlineShop/OnlineShop/obj/Debug/netcoreapp3.1/Razor/Views/Basket/Index.cshtml.g.cs

@@ -1,5 +1,4 @@
 ﻿@inject OnlineShop.Services.LayoutService layout
-
 @*@await Html.PartialAsync("_CartCheckoutPartialView",Model)*@
 
 <!-- Breadcrumb Start -->
@@ -38,19 +37,26 @@
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
                                     <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus">
+                                        <a asp-controller="basket" asp-action="decrease" asp-route-id="@item.clothes.Id" class="btn btn-sm btn-primary btn-minus">
                                             <i class="fa fa-minus"></i>
-                                        </button>
+                                        </a>
                                     </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1">
+                                    @if (layout.GetBasket() != null)
+                                    {
+                                        <input id="input" type="text" class="form-control bg-secondary border-0 text-center" value="@(layout.GetBasket().CartItemVms.FirstOrDefault(x=>x.ClothesId==item.clothes.Id)?.Quantity<1 ? 1 : layout.GetBasket().CartItemVms.FirstOrDefault(x=>x.ClothesId==item.clothes.Id)?.Quantity)">
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="form-control bg-secondary border-0 text-center" value="0">
+                                    }
                                     <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
+                                        <a asp-controller="basket" asp-action="increase" asp-route-id="@item.clothes.Id" class="btn btn-sm btn-primary btn-plus">
                                             <i class="fa fa-plus"></i>
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </td>
-                            <td class="align-middle">$</td>
+                            <td class="align-middle">$@item.TotalPrice</td>
                             <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
                         </tr>
                     }
@@ -91,3 +97,14 @@
     </div>
 </div>
 <!-- Cart End -->
+
+@section Scripts{
+
+    <script>
+        let input = document.querySelector(#input);
+        let attribute=input.getAttribute(value)
+        if()
+    </script>
+
+
+}

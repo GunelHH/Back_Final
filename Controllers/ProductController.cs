@@ -4,8 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using OnlineShop.DAL;
 using OnlineShop.Models;
+using OnlineShop.ViewModels.Basket;
+using static System.Net.WebRequestMethods;
 
 namespace OnlineShop.Controllers
 {
@@ -26,7 +29,10 @@ namespace OnlineShop.Controllers
 
             List<Clothe> relatedClothes = _context.Clothes.Include(c=>c.ImageClothes).Include(c => c.Category).Where(c => c.CategoryId == clothes.CategoryId && c.Id!=id).ToList();
 
+            
             ViewBag.Related = relatedClothes;
+            ViewBag.Carousel = _context.Clothes
+                .Include(c => c.ImageClothes).ToList();
             return View(clothes);
         }
 
@@ -52,13 +58,11 @@ namespace OnlineShop.Controllers
             }
             List<Clothe> clothes = await _context.Clothes.Include(c => c.ImageClothes).ToListAsync();
 
-
             if (!string.IsNullOrEmpty(clicked))
             {
                 clothes = Sorting(clicked);
             }
             
-
             return View(clothes);
         }
 
@@ -83,6 +87,8 @@ namespace OnlineShop.Controllers
             return clothes;
 
         }
+
+
     }
 }
 
