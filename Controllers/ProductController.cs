@@ -29,8 +29,9 @@ namespace OnlineShop.Controllers
 
             List<Clothe> relatedClothes = _context.Clothes.Include(c=>c.ImageClothes).Include(c => c.Category).Where(c => c.CategoryId == clothes.CategoryId && c.Id!=id).ToList();
 
-            
             ViewBag.Related = relatedClothes;
+            ViewBag.Colors = _context.Colors.ToList();
+            ViewBag.Sizes = _context.Sizes.ToList();
             ViewBag.Carousel = _context.Clothes
                 .Include(c => c.ImageClothes).ToList();
             return View(clothes);

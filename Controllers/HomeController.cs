@@ -7,16 +7,19 @@ using OnlineShop.Models;
 using System.Linq;
 using System.Threading.Tasks;
 using OnlineShop.ViewModels;
+using Microsoft.AspNetCore.Identity;
 
 namespace OnlineShop.Controllers
 {
     public class HomeController:Controller
     {
         private readonly AppDbContext _context;
+        private readonly Microsoft.AspNetCore.Identity.UserManager<AppUser> userManager;
 
-        public HomeController(AppDbContext context)
+        public HomeController(AppDbContext context,UserManager<AppUser> userManager)
         {
             this._context = context;
+            this.userManager = userManager;
         }
 
 
@@ -45,7 +48,43 @@ namespace OnlineShop.Controllers
 
         public IActionResult Contact()
         {
+
             return View();
+        }
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Contact(Message message)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (!ModelState.IsValid) return View();
+                AppUser user = await userManager.FindByEmailAsync(message.Email);
+
+                if (user==null)
+                {
+                    return RedirectToAction("notfound", "error");
+                }
+                else
+                {
+                    Message newMessage = new Message
+                    {
+                        Name = message.Name,
+                        Email = message.Email,
+                        Subject = message.Subject,
+                        Body = message.Body
+                    };
+                    _context.Messages.Add(newMessage);
+                    await _context.SaveChangesAsync();
+                    ViewBag.Message = "Your message has been sent successfully";
+                    return View();
+                }
+
+               
+            }
+            
+                ModelState.AddModelError("", "Please Firstly Sign in or  Sign Up");
+                return View();
         }
     }
 }

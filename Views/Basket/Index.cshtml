@@ -37,13 +37,13 @@
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
                                     <div class="input-group-btn">
-                                        <a asp-controller="basket" asp-action="decrease" asp-route-id="@item.clothes.Id" class="btn btn-sm btn-primary btn-minus">
+                                        <a id="minus"  asp-controller="basket" asp-action="decrease" asp-route-id="@item.clothes.Id" class="btn btn-sm btn-primary btn-minus disable" >
                                             <i class="fa fa-minus"></i>
                                         </a>
                                     </div>
                                     @if (layout.GetBasket() != null)
                                     {
-                                        <input id="input" type="text" class="form-control bg-secondary border-0 text-center" value="@(layout.GetBasket().CartItemVms.FirstOrDefault(x=>x.ClothesId==item.clothes.Id)?.Quantity<1 ? 1 : layout.GetBasket().CartItemVms.FirstOrDefault(x=>x.ClothesId==item.clothes.Id)?.Quantity)">
+                                        <input  id="input" type="text" class="form-control bg-secondary border-0 text-center" value="@(layout.GetBasket().CartItemVms.FirstOrDefault(x=>x.ClothesId==item.clothes.Id)?.Quantity<1 ? 1 : layout.GetBasket().CartItemVms.FirstOrDefault(x=>x.ClothesId==item.clothes.Id)?.Quantity)">
                                     }
                                     else
                                     {
@@ -100,11 +100,17 @@
 
 @section Scripts{
 
-    <script>
-        let input = document.querySelector(#input);
-        let attribute=input.getAttribute(value)
-        if()
-    </script>
+    @*<script>
+        let input = document.querySelector("#input").value;
+        let btn = document.querySelector("#minus");
+       
+        function Get() {
+            if (input==1) {
+                btn.disabled = true;
+            }
+        }
+       
+    </script>*@
 
 
 }

@@ -32,6 +32,10 @@ namespace OnlineShop.DAL
 
         public DbSet<Advertisement> Advertisements { get; set; }
 
+        public DbSet<BasketItem> BasketItems { get; set; }
+
+        public DbSet<Message> Messages { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             foreach (var item in modelBuilder.Model.GetEntityTypes()
