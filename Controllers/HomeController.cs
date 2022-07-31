@@ -48,7 +48,7 @@ namespace OnlineShop.Controllers
 
         public IActionResult Contact()
         {
-
+            ViewBag.Setting = _context.Settings.ToList();
             return View();
         }
 
@@ -77,6 +77,7 @@ namespace OnlineShop.Controllers
                     _context.Messages.Add(newMessage);
                     await _context.SaveChangesAsync();
                     ViewBag.Message = "Your message has been sent successfully";
+                    ViewBag.Setting = _context.Settings.ToList();
                     return View();
                 }
 
@@ -84,7 +85,8 @@ namespace OnlineShop.Controllers
             }
             
                 ModelState.AddModelError("", "Please Firstly Sign in or  Sign Up");
-                return View();
+            ViewBag.Setting = _context.Settings.ToList();
+            return View();
         }
     }
 }

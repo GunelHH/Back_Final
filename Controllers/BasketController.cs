@@ -28,36 +28,36 @@ namespace OnlineShop.Controllers
         }
 
 
-        public IActionResult AddBasket(int? id)
+        public async Task<IActionResult> AddBasket(int? id)
         {
             if (id is null || id == 0) return RedirectToAction("notfound", "error");
             Clothe clothes = context.Clothes.FirstOrDefault(c => c.Id == id);
             if (clothes is null) return RedirectToAction("notfound", "error");
 
-            //if (User.Identity.IsAuthenticated)
-            //{
-            //    AppUser user = await userManager.FindByNameAsync(User.Identity.Name);
-            //    if (user == null) return NotFound();
-            //    BasketItem existed = await context.BasketItems.FirstOrDefaultAsync(b => b.AppUserId == user.Id && b.PlantId == plant.Id);
-            //    if (existed == null)
-            //    {
-            //        existed = new BasketItem
-            //        {
-            //            Plant = plant,
-            //            AppUser = user,
-            //            Quantity = 1,
-            //            Price = plant.Price
-            //        };
-            //        context.BasketItems.Add(existed);
-            //    }
-            //    else
-            //    {
-            //        existed.Quantity++;
-            //    }
-            //    await context.SaveChangesAsync();
-            //}
-            //else
-            //{
+            if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+            {
+                AppUser user = await userManager.FindByNameAsync(User.Identity.Name);
+                if (user == null) return NotFound();
+                BasketItem existed = await context.BasketItems.FirstOrDefaultAsync(b => b.UserId == user.Id && b.ClotheId == clothes.Id);
+                if (existed == null)
+                {
+                    existed = new BasketItem
+                    {
+                        Clothes = clothes,
+                        User = user,
+                        Quantity = 1,
+                        Price = clothes.Price
+                    };
+                    context.BasketItems.Add(existed);
+                }
+                else
+                {
+                    existed.Quantity++;
+                }
+                await context.SaveChangesAsync();
+            }
+            else
+            {
                 string BasketStr = HttpContext.Request.Cookies["Basket"];
 
                 BasketVM basket;
@@ -102,7 +102,7 @@ namespace OnlineShop.Controllers
 
 
                 HttpContext.Response.Cookies.Append("Basket", BasketStr);
-            //}
+            }
 
             return RedirectToAction("index", "home");
 

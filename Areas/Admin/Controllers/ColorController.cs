@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.DAL;
 using OnlineShop.Models;
@@ -10,6 +12,7 @@ using OnlineShop.Models;
 namespace OnlineShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class ColorController : Controller
     {
         private readonly AppDbContext context;

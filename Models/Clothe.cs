@@ -42,6 +42,9 @@ namespace OnlineShop.Models
         [NotMapped]
         public List<IFormFile> SecondaryImages { get; set; }
 
+        [NotMapped]
+        public List<int> ImagesId { get; set; }
+
 
     }
 }

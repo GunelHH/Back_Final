@@ -23,7 +23,11 @@ namespace OnlineShop.Controllers
         public IActionResult Detail(int? id)
         {
             if (id is null || id == 0) return RedirectToAction("notfound", "error");
-            Clothe clothes = _context.Clothes.Include(i => i.ImageClothes).Include(i => i.ClotheInformation).FirstOrDefault(i => i.Id == id);
+            Clothe clothes = _context.Clothes
+                .Include(i => i.ImageClothes)
+                .Include(i=>i.Category)
+                .Include(i=>i.Tag)
+                .Include(i => i.ClotheInformation).FirstOrDefault(i => i.Id == id);
             if (id is null) return RedirectToAction("notfound", "error");
 
 

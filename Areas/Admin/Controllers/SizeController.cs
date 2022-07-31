@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.DAL;
 using OnlineShop.Models;
@@ -11,6 +13,7 @@ using Size = OnlineShop.Models.Size;
 namespace OnlineShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class SizeController : Controller
     {
         private readonly AppDbContext context;

@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.DAL;
 using OnlineShop.Models;
@@ -9,6 +11,7 @@ using OnlineShop.Models;
 namespace OnlineShop.Areas.Admin
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class DashboardController : Controller
     {
         private readonly AppDbContext context;

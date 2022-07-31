@@ -34,6 +34,8 @@ namespace OnlineShop.DAL
 
         public DbSet<BasketItem> BasketItems { get; set; }
 
+        public DbSet<Order> Orders { get; set; }
+
         public DbSet<Message> Messages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

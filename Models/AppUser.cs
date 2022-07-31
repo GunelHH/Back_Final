@@ -12,6 +12,8 @@ namespace OnlineShop.Models
         public string LastName { get; set; }
 
         public List<BasketItem> basketItems { get; set; }
+
+        public List<Order> Orders { get; set; }
     }
 }
 

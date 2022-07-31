@@ -14,11 +14,13 @@ namespace OnlineShop.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> signInManager;
+        private readonly RoleManager<IdentityRole> roleManager;
 
-        public AccountController(UserManager<AppUser> userManager,SignInManager<AppUser> signInManager)
+        public AccountController(UserManager<AppUser> userManager,SignInManager<AppUser> signInManager,RoleManager<IdentityRole> roleManager)
         {
             this._userManager = userManager;
             this.signInManager = signInManager;
+            this.roleManager = roleManager;
         }
         public IActionResult Register()
         {
@@ -55,6 +57,7 @@ namespace OnlineShop.Controllers
                     return View();
                 }
             }
+            await _userManager.AddToRoleAsync(user, "Member");
 
             return RedirectToAction("Index","Home");
         }
@@ -105,6 +108,13 @@ namespace OnlineShop.Controllers
         {
             return Json(User.Identity.IsAuthenticated);
         }
+
+        //public async Task CreateRoles()
+        //{
+        //    await roleManager.CreateAsync(new IdentityRole("Member"));
+        //    await roleManager.CreateAsync(new IdentityRole("Moderator"));
+        //    await roleManager.CreateAsync(new IdentityRole("Admin"));
+        //}
 
     }
 }

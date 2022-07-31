@@ -14,7 +14,7 @@ using OnlineShop.Utilities;
 namespace OnlineShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class ClothesController : Controller
     {
         private readonly AppDbContext _context;
@@ -130,8 +130,8 @@ namespace OnlineShop.Areas.Admin.Controllers
 
         public IActionResult Update(int? id)
         {
-            if (id is null || id == 0) return RedirectToAction("notfound", "error");
-            Clothe clothes = _context.Clothes.FirstOrDefault(i=>i.Id==id);
+            if (id is null || id == 0) return RedirectToAction("notfound", "error", new { area = string.Empty });
+            Clothe clothes = _context.Clothes.Include(i=>i.ImageClothes).FirstOrDefault(i=>i.Id==id);
             if (clothes is null) return RedirectToAction("notfound", "error", new { area = string.Empty });
 
             ViewBag.Categories = _context.Categories.ToList();
@@ -141,12 +141,27 @@ namespace OnlineShop.Areas.Admin.Controllers
             return View(clothes);
         }
 
-        //[HttpPost]
-        //[AutoValidateAntiforgeryToken]
-        //public async Task<IActionResult> Update(int? id,Clothe clothes)
-        //{
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Update(int? id, Clothe NewClothes)
+        {
+            Clothe exist = _context.Clothes.FirstOrDefault(i => i.Id == id);
+            if (exist is null) return RedirectToAction("notfound", "error", new { area = string.Empty });
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Categories = _context.Categories.ToList();
+                ViewBag.Tags = _context.Tags.ToList();
+                ViewBag.Informations = _context.ClotheInformation.ToList();
+                return View(exist);
+            }
+            if (NewClothes.MainImage is null || NewClothes.SecondaryImages is null)
+            {
+                //string main = exist.MainImage;
+            }
+            return View();
 
-        //}
+
+        }
 
 
         public IActionResult Delete(int? id)
