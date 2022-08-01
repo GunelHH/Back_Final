@@ -41,7 +41,7 @@ namespace OnlineShop.Controllers
             return View(clothes);
         }
 
-        public async Task<IActionResult> Shop(int? id,string clicked)
+        public async Task<IActionResult> Shop(int? id,string clicked,int page=1)
         {
             if (id != null && id != 0)
             {
@@ -61,7 +61,10 @@ namespace OnlineShop.Controllers
                 
                    
             }
-            List<Clothe> clothes = await _context.Clothes.Include(c => c.ImageClothes).ToListAsync();
+            List<Clothe> clothes = await _context.Clothes.Include(c => c.ImageClothes).Skip((page-1)*4).Take(4).ToListAsync();
+            ViewBag.Page = page;
+
+            ViewBag.TotalPage = Math.Ceiling((decimal)_context.Clothes.Count() / 4);
 
             if (!string.IsNullOrEmpty(clicked))
             {

@@ -1,5 +1,4 @@
-﻿@inject OnlineShop.Services.LayoutService layout
-@*@await Html.PartialAsync("_CartCheckoutPartialView",Model)*@
+﻿@inject OnlineShop.Services.LayoutService cart
 
 <!-- Breadcrumb Start -->
 <div class="container-fluid">
@@ -29,7 +28,7 @@
                     </tr>
                 </thead>
                 <tbody class="align-middle">
-                    @foreach (CartItemVM item in layout.GetBasket()?.CartItemVms)
+                    @foreach (CartItemVM item in cart.GetBasket().CartItemVms)
                     {
                         <tr>
                             <td class="align-middle"><img src="~/assets/img/products/@item.clothes.ImageClothes.FirstOrDefault(i=>i.IsMain==true)?.Name" alt="" style="width: 50px;"> @item.clothes.Name</td>
@@ -41,9 +40,9 @@
                                             <i class="fa fa-minus"></i>
                                         </a>
                                     </div>
-                                    @if (layout.GetBasket() != null)
+                                    @if (cart.GetBasket() != null)
                                     {
-                                        <input  id="input" type="text" class="form-control bg-secondary border-0 text-center" value="@(layout.GetBasket().CartItemVms.FirstOrDefault(x=>x.ClothesId==item.clothes.Id)?.Quantity<1 ? 1 : layout.GetBasket().CartItemVms.FirstOrDefault(x=>x.ClothesId==item.clothes.Id)?.Quantity)">
+                                        <input  id="input" type="text" class="form-control bg-secondary border-0 text-center" value="@(cart.GetBasket().CartItemVms.FirstOrDefault(x=>x.ClothesId==item.clothes.Id)?.Quantity<1 ? 1 : cart.GetBasket().CartItemVms.FirstOrDefault(x=>x.ClothesId==item.clothes.Id)?.Quantity)">
                                     }
                                     else
                                     {
@@ -57,7 +56,7 @@
                                 </div>
                             </td>
                             <td class="align-middle">$@item.TotalPrice</td>
-                            <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
+                            <td class="align-middle"><a asp-controller="basket" asp-action="RemoveFromBasket" asp-route-id="@item.clothes.Id" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></a></td>
                         </tr>
                     }
 
@@ -90,7 +89,7 @@
                         <h5>Total</h5>
                         <h5>$160</h5>
                     </div>
-                    <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>
+                    <a asp-controller="order" asp-action="checkout" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</a>
                 </div>
             </div>
         </div>

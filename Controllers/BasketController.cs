@@ -217,6 +217,42 @@ namespace OnlineShop.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
+        public async Task<IActionResult> RemoveFromBasket(int? id)
+        {
+            if (id == null || id == 0) return RedirectToAction("notfound", "error");
+            Clothe clothe = await context.Clothes.FirstOrDefaultAsync(i=>i.Id==id);
+            if (clothe is null) return RedirectToAction("notfound", "error");
+
+            string BasketStr = HttpContext.Request.Cookies["Basket"];
+
+
+            if (!string.IsNullOrEmpty(BasketStr))
+            {
+                BasketVM basket = new BasketVM();
+                basket.BasketCookieItemVMs = new List<BasketCookieItemVM>();
+
+                basket = JsonConvert.DeserializeObject<BasketVM>(BasketStr);
+
+
+                BasketCookieItemVM cookieItem = basket.BasketCookieItemVMs.Find(b => b.Id == id);
+
+                if (cookieItem != null)
+                {
+                    basket.BasketCookieItemVMs.Remove(cookieItem);
+                    basket.TotalPrice -= clothe.Price;
+                }
+                else
+                {
+                    return NotFound();
+                }
+            BasketStr = JsonConvert.SerializeObject(basket);
+            HttpContext.Response.Cookies.Append("Basket", BasketStr);
+
+            }
+            return RedirectToAction("index", "basket");
+        }
+
         //public async Task<IActionResult> GetColor(int? id,string name)
         //{
         //    Color color = context.Colors.FirstOrDefault(c => c.Name == name);

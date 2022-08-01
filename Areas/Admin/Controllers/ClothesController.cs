@@ -154,16 +154,11 @@ namespace OnlineShop.Areas.Admin.Controllers
                 ViewBag.Informations = _context.ClotheInformation.ToList();
                 return View(exist);
             }
-            if (NewClothes.MainImage is null || NewClothes.SecondaryImages is null)
-            {
-                //string main = exist.MainImage;
-            }
+
             return View();
 
 
         }
-
-
         public IActionResult Delete(int? id)
         {
             if(id is null || id==0)return RedirectToAction("notfound", "error");

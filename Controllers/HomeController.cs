@@ -39,12 +39,12 @@ namespace OnlineShop.Controllers
 
 
 
-        public async Task<IActionResult> Shop()
-        {
-            List<Clothe> clothes =await _context.Clothes.Include(i => i.Category)
-                .Include(i => i.ClotheInformation).Include(i => i.ImageClothes).Include(i => i.Tag).ToListAsync();
-            return View(clothes);
-        }
+        //public async Task<IActionResult> Shop(int page=1)
+        //{
+        //    List<Clothe> clothes =await _context.Clothes.Include(i => i.Category)
+        //        .Include(i => i.ClotheInformation).Include(i => i.ImageClothes).Include(i => i.Tag).Skip((page-1)*4).Take(4).ToListAsync();
+        //    return View(clothes);
+        //}
 
         public IActionResult Contact()
         {
